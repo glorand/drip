@@ -35,8 +35,8 @@ abstract class Api
     }
 
     /**
-     * @param $method
-     * @param $url
+     * @param       $method
+     * @param       $url
      * @param array $params
      *
      * @return ApiResponse

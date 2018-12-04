@@ -33,7 +33,7 @@ class Event implements JsonSerializable
      *
      * @return Event
      */
-    public function addProperty($key, $value):self
+    public function addProperty($key, $value): self
     {
         $this->properties[$key] = $value;
 

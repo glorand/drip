@@ -7,7 +7,7 @@ use Glorand\Drip\Api\Response\ApiResponse;
 class Accounts extends Api
 {
     /**
-     * List all accounts
+     * List all accounts.
      * @return Response\ApiResponse
      */
     public function list(): ApiResponse
@@ -16,8 +16,10 @@ class Accounts extends Api
     }
 
     /**
-     * Fetch an account
+     * Fetch an account.
+     *
      * @param string $accountId
+     *
      * @return ApiResponse
      */
     public function show(string $accountId): ApiResponse

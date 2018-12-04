@@ -34,6 +34,7 @@ class Events extends Api
 
     /**
      * @param Event $event
+     *
      * @return bool
      */
     public function store(Event $event): bool

@@ -42,7 +42,7 @@ trait ClientManager
                     $this->apiToken,
                     '',
                 ],
-                'headers' => [
+                'headers'  => [
                     'Accept'       => 'application/vnd.api+json',
                     'Content-Type' => 'application/vnd.api+json',
                     'User-Agent'   => $this->userAgent,
