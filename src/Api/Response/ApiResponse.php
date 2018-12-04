@@ -21,12 +21,12 @@ class ApiResponse
         $this->url = $url;
         $this->options = $options;
         $this->response = $response;
-        $this->body = json_decode((string)$response->getBody(), true);
+        $this->body = json_decode((string) $response->getBody(), true);
     }
 
     public function getStatusCode(): int
     {
-        return (int)$this->response->getStatusCode();
+        return (int) $this->response->getStatusCode();
     }
 
     public function isSuccess(): bool

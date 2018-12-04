@@ -30,6 +30,7 @@ class Event implements JsonSerializable
     /**
      * @param $key
      * @param $value
+     *
      * @return Event
      */
     public function addProperty($key, $value):self
@@ -41,6 +42,7 @@ class Event implements JsonSerializable
 
     /**
      * @param $key
+     *
      * @return Event
      */
     public function removeProperty($key): self
@@ -54,6 +56,7 @@ class Event implements JsonSerializable
 
     /**
      * @param array $properties
+     *
      * @return Event
      */
     public function setProperties(array $properties): self
@@ -65,6 +68,7 @@ class Event implements JsonSerializable
 
     /**
      * @param string $email
+     *
      * @return Event
      */
     public function setEmail(string $email): self
@@ -76,6 +80,7 @@ class Event implements JsonSerializable
 
     /**
      * @param string $action
+     *
      * @return Event
      */
     public function setAction(string $action): self
@@ -87,6 +92,7 @@ class Event implements JsonSerializable
 
     /**
      * @param DateTime $occurredAt
+     *
      * @return Event
      */
     public function setOccurredAt(DateTime $occurredAt): self

@@ -13,6 +13,7 @@ class EventsTest extends TestCase
 {
     /**
      * @test
+     *
      * @throws DripException
      */
     public function canListEvents()
@@ -39,6 +40,7 @@ class EventsTest extends TestCase
 
     /**
      * @test
+     *
      * @throws \Exception
      */
     public function canCreateEvent()

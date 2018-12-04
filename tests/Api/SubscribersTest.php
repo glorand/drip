@@ -2,18 +2,11 @@
 
 namespace Glorand\Drip\Tests\Api;
 
-use Carbon\Carbon;
-use Glorand\Drip\Api\Events;
 use Glorand\Drip\Drip;
 use Glorand\Drip\Exceptions\DripException;
-use Glorand\Drip\Models\Event;
 use Glorand\Drip\Models\Subscriber;
 use Glorand\Drip\Tests\TestCase;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
 class SubscribersTest extends TestCase

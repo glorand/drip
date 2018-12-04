@@ -3,8 +3,6 @@
 namespace Glorand\Drip\Api;
 
 use Glorand\Drip\Api\Response\ApiResponse;
-use Glorand\Drip\Exceptions\DripException;
-use Glorand\Drip\Exceptions\UnexpectedHttpVerbException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
@@ -23,6 +21,7 @@ abstract class Api
 
     /**
      * Api constructor.
+     *
      * @param Client $client
      */
     public function __construct(Client $client)
@@ -32,14 +31,15 @@ abstract class Api
 
     protected function prepareUrl(string $url): string
     {
-        return 'v2/' . $url;
+        return 'v2/'.$url;
     }
 
     /**
      * Determines whether the response is a success.
      *
      * @param int $code
-     * @return boolean
+     *
+     * @return bool
      */
     protected function isSuccessResponse($code): bool
     {
@@ -50,6 +50,7 @@ abstract class Api
      * @param $method
      * @param $url
      * @param array $params
+     *
      * @return ApiResponse
      */
     public function makeRequest($method, $url, $params = [])
@@ -72,6 +73,7 @@ abstract class Api
                 break;
             // @codeCoverageIgnoreEnd
         }
+
         try {
             $response = $this->client->request($method, $url, $options);
         } catch (GuzzleException $e) {
