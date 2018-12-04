@@ -34,9 +34,9 @@ class ApiResponse
         return $this->getStatusCode() >= 200 && $this->getStatusCode() <= 299;
     }
 
-    public function getHttpMessage(): ?string
+    public function getHttpMessage(): string
     {
-        return $this->response->getReasonPhrase();
+        return $this->response->getReasonPhrase() ?? '';
     }
 
     public function getContents(): array
