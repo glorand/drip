@@ -11,8 +11,10 @@ class Events extends Api
     /**
      * @param int $page
      * @param int $perPage
-     * @return Response\ApiResponse
+     *
      * @throws DripException
+     *
+     * @return Response\ApiResponse
      */
     public function all(int $page = 1, int $perPage = 100): ApiResponse
     {
