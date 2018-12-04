@@ -33,7 +33,7 @@ class SubscribersTest extends TestCase
         $this->assertEquals('Unauthorized', $events->getHttpMessage());
 
         $this->expectException(DripException::class);
-        $events = $drip->events()->all(1, 1001);
+        $events = $drip->events()->list(1, 1001);
     }
 
     /**
@@ -48,7 +48,7 @@ class SubscribersTest extends TestCase
         $drip = new Drip($this->apiToken, $this->accountId, $this->userAgent);
         $drip->setHandler($mock);
         $subscriber = new Subscriber();
-        $subscriber->setEmail('gombos.lorand@gmail.com');
+        $subscriber->setEmail('test@email.com');
         $response = $drip->subscribers()->store($subscriber);
         $this->assertFalse($response);
 

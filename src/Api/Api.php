@@ -35,18 +35,6 @@ abstract class Api
     }
 
     /**
-     * Determines whether the response is a success.
-     *
-     * @param int $code
-     *
-     * @return bool
-     */
-    protected function isSuccessResponse($code): bool
-    {
-        return $code >= 200 && $code <= 299;
-    }
-
-    /**
      * @param $method
      * @param $url
      * @param array $params

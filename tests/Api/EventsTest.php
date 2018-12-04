@@ -25,17 +25,17 @@ class EventsTest extends TestCase
         $drip = new Drip($this->apiToken, $this->accountId, $this->userAgent);
         $drip->setHandler($mock);
 
-        $events = $drip->events()->all();
+        $events = $drip->events()->list();
         $this->assertTrue($events->isSuccess());
         $this->assertEquals(['a' => 'b'], $events->getContents());
         $this->assertEquals('OK', $events->getHttpMessage());
 
-        $events = $drip->events()->all();
+        $events = $drip->events()->list();
         $this->assertFalse($events->isSuccess());
         $this->assertEquals('Unauthorized', $events->getHttpMessage());
 
         $this->expectException(DripException::class);
-        $events = $drip->events()->all(1, 1001);
+        $events = $drip->events()->list(1, 1001);
     }
 
     /**

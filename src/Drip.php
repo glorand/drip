@@ -2,6 +2,7 @@
 
 namespace Glorand\Drip;
 
+use Glorand\Drip\Api\Accounts;
 use Glorand\Drip\Api\Events;
 use Glorand\Drip\Api\Subscribers;
 use Glorand\Drip\Traits\ClientManager;
@@ -38,5 +39,13 @@ class Drip
     public function subscribers(): Subscribers
     {
         return new Subscribers($this->getClient());
+    }
+
+    /**
+     * @return Accounts
+     */
+    public function accounts(): Accounts
+    {
+        return new Accounts($this->getClient());
     }
 }

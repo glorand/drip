@@ -24,7 +24,6 @@ class Subscribers extends Api
             self::GET,
             $this->prepareUrl('/:account_id:/subscribers'),
             array_merge(
-
                 [
                     'page'     => $page,
                     'per_page' => $perPage,

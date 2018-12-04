@@ -16,7 +16,7 @@ class Events extends Api
      *
      * @return Response\ApiResponse
      */
-    public function all(int $page = 1, int $perPage = 100): ApiResponse
+    public function list(int $page = 1, int $perPage = 100): ApiResponse
     {
         if (1 > $perPage || 1000 < $perPage) {
             throw new DripException('Invalid per page; maximum 1000');
@@ -32,6 +32,10 @@ class Events extends Api
         );
     }
 
+    /**
+     * @param Event $event
+     * @return bool
+     */
     public function store(Event $event): bool
     {
         $response = $this->makeRequest(
