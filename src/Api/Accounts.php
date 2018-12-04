@@ -8,6 +8,7 @@ class Accounts extends Api
 {
     /**
      * List all accounts.
+     *
      * @return Response\ApiResponse
      */
     public function list(): ApiResponse

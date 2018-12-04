@@ -9,7 +9,6 @@ use GuzzleHttp\Psr7\Response;
 
 class AccountsTest extends TestCase
 {
-
     public function testList()
     {
         $mock = new MockHandler([
