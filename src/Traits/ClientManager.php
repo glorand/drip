@@ -3,13 +3,9 @@
 namespace Glorand\Drip\Traits;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 
 trait ClientManager
 {
@@ -19,7 +15,7 @@ trait ClientManager
     private $accountId;
     /** @var string */
     private $userAgent;
-    /** @var string  */
+    /** @var string */
     private $apiEndPoint = 'https://api.getdrip.com';
     /** @var Client */
     private $client = null;
@@ -28,6 +24,7 @@ trait ClientManager
 
     /**
      * @param array $options
+     *
      * @return Client
      */
     public function getClient(array $options = [])
@@ -41,7 +38,7 @@ trait ClientManager
             $options,
             [
                 'base_uri' => $this->apiEndPoint,
-                'auth'    => [
+                'auth'     => [
                     $this->apiToken,
                     '',
                 ],
@@ -81,6 +78,7 @@ trait ClientManager
             if (false !== strpos($path, ':account_id:')) {
                 $path = str_replace(':account_id:', $this->accountId, $path);
             }
+
             return $r->withUri($r->getUri()->withPath($path));
         }));
 

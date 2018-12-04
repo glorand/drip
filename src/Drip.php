@@ -9,8 +9,10 @@ use Glorand\Drip\Traits\ClientManager;
 class Drip
 {
     use ClientManager;
+
     /**
      * Drip constructor.
+     *
      * @param string $apiToken
      * @param string $accountId
      * @param string $userAgent

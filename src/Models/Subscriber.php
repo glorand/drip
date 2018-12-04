@@ -28,6 +28,7 @@ class Subscriber
     /**
      * @param $key
      * @param $value
+     *
      * @return Subscriber
      */
     public function addCustomField($key, $value): self
@@ -39,6 +40,7 @@ class Subscriber
 
     /**
      * @param $key
+     *
      * @return Subscriber
      */
     public function removeCustomField($key): self
@@ -53,6 +55,7 @@ class Subscriber
     /**
      * @param $key
      * @param $value
+     *
      * @return Subscriber
      */
     public function addTag($key, $value): self
@@ -64,6 +67,7 @@ class Subscriber
 
     /**
      * @param $key
+     *
      * @return Subscriber
      */
     public function removeTag($key): self
@@ -77,6 +81,7 @@ class Subscriber
 
     /**
      * @param string $email
+     *
      * @return Subscriber
      */
     public function setEmail(string $email): self
@@ -88,6 +93,7 @@ class Subscriber
 
     /**
      * @param string $new_email
+     *
      * @return Subscriber
      */
     public function setNewEmail(string $new_email): self
@@ -99,6 +105,7 @@ class Subscriber
 
     /**
      * @param string $user_id
+     *
      * @return Subscriber
      */
     public function setUserId(string $user_id): self
@@ -110,6 +117,7 @@ class Subscriber
 
     /**
      * @param string $time_zone
+     *
      * @return Subscriber
      */
     public function setTimeZone(string $time_zone): self
@@ -121,6 +129,7 @@ class Subscriber
 
     /**
      * @param string $ip_address
+     *
      * @return Subscriber
      */
     public function setIpAddress(string $ip_address): self
@@ -132,6 +141,7 @@ class Subscriber
 
     /**
      * @param array $custom_fields
+     *
      * @return Subscriber
      */
     public function setCustomFields(array $custom_fields): self
@@ -143,6 +153,7 @@ class Subscriber
 
     /**
      * @param array $tags
+     *
      * @return Subscriber
      */
     public function setTags(array $tags): self
@@ -154,6 +165,7 @@ class Subscriber
 
     /**
      * @param array $remove_tags
+     *
      * @return Subscriber
      */
     public function setRemoveTags(array $remove_tags): self
