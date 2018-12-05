@@ -1,0 +1,9 @@
+preset: recommended
+
+risky: false
+
+enabled:
+  - phpdoc_annotation_without_dot
+
+disabled:
+  - single_quote

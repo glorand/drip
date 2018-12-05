@@ -5,7 +5,6 @@ namespace Glorand\Drip;
 use Glorand\Drip\Api\Accounts;
 use Glorand\Drip\Api\Events;
 use Glorand\Drip\Api\Subscribers;
-use Glorand\Drip\ClientManager;
 
 class Drip extends ClientManager
 {
