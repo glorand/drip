@@ -22,9 +22,8 @@ class Events extends Api
             throw new DripException('Invalid per page; maximum 1000');
         }
 
-        return $this->makeRequest(
-            self::GET,
-            $this->prepareUrl('/:account_id:/event_actions'),
+        return $this->sendGet(
+            ':account_id:/event_actions',
             [
                 'page'     => $page,
                 'per_page' => $perPage,
@@ -33,16 +32,18 @@ class Events extends Api
     }
 
     /**
+     * Record an event
+     * @see https://developer.drip.com/?shell#events
+     *
      * @param Event $event
      *
      * @return bool
      */
     public function store(Event $event): bool
     {
-        $response = $this->makeRequest(
-            self::POST,
-            $this->prepareUrl('/:account_id:/event_actions'),
-            $event->jsonSerialize()
+        $response = $this->sendPost(
+            ':account_id:/events',
+            $event->toDrip()
         );
 
         return $response->isSuccess();

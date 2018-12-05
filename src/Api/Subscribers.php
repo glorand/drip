@@ -20,9 +20,8 @@ class Subscribers extends Api
      */
     public function list(int $page = 1, int $perPage = 100, array $params = []): ApiResponse
     {
-        return $this->makeRequest(
-            self::GET,
-            $this->prepareUrl('/:account_id:/subscribers'),
+        return $this->sendGet(
+            ':account_id:/subscribers',
             array_merge(
                 [
                     'page'     => $page,
@@ -40,10 +39,9 @@ class Subscribers extends Api
      */
     public function store(Subscriber $subscriber): bool
     {
-        $response = $this->makeRequest(
-            self::POST,
-            $this->prepareUrl('/:account_id:/subscribers'),
-            $subscriber->jsonSerialize()
+        $response = $this->sendPost(
+            ':account_id:/subscribers',
+            $subscriber->toDrip()
         );
 
         return $response->isSuccess();

@@ -1,26 +1,28 @@
 <?php
 
-namespace Glorand\Drip\Traits;
+namespace Glorand\Drip;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
-use Psr\Http\Message\RequestInterface;
 
-trait ClientManager
+abstract class ClientManager
 {
     /** @var string */
     private $apiToken;
     /** @var string */
-    private $accountId;
-    /** @var string */
     private $userAgent;
     /** @var string */
-    private $apiEndPoint = 'https://api.getdrip.com';
+    private $apiEndPoint = 'https://api.getdrip.com/v2/';
     /** @var Client */
     private $client = null;
     /** @var HandlerStack */
     private $handler;
+
+    public function __construct(string $apiToken, string $userAgent)
+    {
+        $this->apiToken = $apiToken;
+        $this->userAgent = $userAgent;
+    }
 
     /**
      * @param array $options
@@ -61,26 +63,23 @@ trait ClientManager
         return $this;
     }
 
+    /**
+     * @param callable|null $handler
+     */
     public function setHandler(callable $handler = null)
     {
         $this->handler = $handler;
     }
 
+    /**
+     * @return HandlerStack
+     */
     private function createClientHandler(): HandlerStack
     {
         $stack = HandlerStack::create();
         if ($this->handler) {
             $stack->setHandler($this->handler);
         }
-
-        $stack->unshift(Middleware::mapRequest(function (RequestInterface $r) {
-            $path = $r->getUri()->getPath();
-            if (false !== strpos($path, ':account_id:')) {
-                $path = str_replace(':account_id:', $this->accountId, $path);
-            }
-
-            return $r->withUri($r->getUri()->withPath($path));
-        }));
 
         return $stack;
     }

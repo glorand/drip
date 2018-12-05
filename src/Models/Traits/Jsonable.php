@@ -20,4 +20,6 @@ trait Jsonable
 
         return $response;
     }
+
+    abstract public function toDrip(): array;
 }

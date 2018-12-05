@@ -13,7 +13,7 @@ class Accounts extends Api
      */
     public function list(): ApiResponse
     {
-        return $this->makeRequest(self::GET, $this->prepareUrl('accounts'));
+        return $this->sendGet('accounts');
     }
 
     /**
@@ -25,6 +25,6 @@ class Accounts extends Api
      */
     public function show(string $accountId): ApiResponse
     {
-        return $this->makeRequest(self::GET, $this->prepareUrl("accounts/$accountId"));
+        return $this->sendGet("accounts/$accountId");
     }
 }

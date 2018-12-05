@@ -101,4 +101,13 @@ class Event implements JsonSerializable
 
         return $this;
     }
+
+    public function toDrip(): array
+    {
+        return [
+            "events" => [
+                $this->jsonSerialize(),
+            ],
+        ];
+    }
 }

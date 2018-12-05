@@ -22,12 +22,12 @@ class EventsTest extends TestCase
             new Response(200, [], json_encode(['a' => 'b'])),
             new Response(401, ['Content-Length' => 0]),
         ]);
-        $drip = new Drip($this->apiToken, $this->accountId, $this->userAgent);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
         $drip->setHandler($mock);
 
         $events = $drip->events()->list();
         $this->assertTrue($events->isSuccess());
-        $this->assertEquals(['a' => 'b'], $events->getContents());
+        $this->assertIsArray($events->getContents());
         $this->assertEquals('OK', $events->getHttpMessage());
 
         $events = $drip->events()->list();
@@ -49,12 +49,12 @@ class EventsTest extends TestCase
             new Response(403, []),
             new Response(200, []),
         ]);
-        $drip = new Drip($this->apiToken, $this->accountId, $this->userAgent);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
         $drip->setHandler($mock);
 
         $event = new Event();
-        $event->setEmail('gombos.lorand@gmail.com');
-        $event->setAction('Test Action Lorand');
+        $event->setEmail('test@email.com');
+        $event->setAction('Test Action Foo');
         $event->addProperty('test', 'value');
         $event->setOccurredAt(new \DateTime());
 

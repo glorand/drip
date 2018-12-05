@@ -18,50 +18,53 @@ abstract class Api
      * @var Client
      */
     protected $client;
+    /** @var string */
+    protected $accountId;
 
     /**
      * Api constructor.
      *
      * @param Client $client
+     * @param string $accountId
      */
-    public function __construct(Client $client)
+    public function __construct(Client $client, string $accountId)
     {
         $this->client = $client;
+        $this->accountId = $accountId;
     }
 
     protected function prepareUrl(string $url): string
     {
-        return 'v2/'.$url;
+        if (false !== strpos($url, ':account_id:')) {
+            $url = str_replace(':account_id:', $this->accountId, $url);
+        }
+
+        return trim($url, '/');
+    }
+
+    protected function sendGet($url, array $params = []): ApiResponse
+    {
+        $options['query'] = $params;
+
+        return $this->makeRequest(self::GET, $this->prepareUrl($url), $options);
+    }
+
+    protected function sendPost($url, array $params = []): ApiResponse
+    {
+        $options['body'] = is_array($params) ? json_encode($params) : $params;
+
+        return $this->makeRequest(self::POST, $this->prepareUrl($url), $options);
     }
 
     /**
      * @param       $method
      * @param       $url
-     * @param array $params
+     * @param array $options
      *
      * @return ApiResponse
      */
-    public function makeRequest($method, $url, $params = [])
+    private function makeRequest($method, $url, array $options = []): ApiResponse
     {
-        $options = [];
-        switch ($method) {
-            case self::GET:
-                $options['query'] = $params;
-                break;
-            case self::POST:
-            case self::DELETE:
-                // @codeCoverageIgnoreStart
-            case self::PUT:
-                // @codeCoverageIgnoreEnd
-                $options['body'] = is_array($params) ? json_encode($params) : $params;
-                break;
-            default:
-                // @codeCoverageIgnoreStart
-                $method = 'GET';
-                break;
-            // @codeCoverageIgnoreEnd
-        }
-
         try {
             $response = $this->client->request($method, $url, $options);
         } catch (GuzzleException $e) {
