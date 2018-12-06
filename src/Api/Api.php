@@ -44,14 +44,18 @@ abstract class Api
 
     protected function sendGet($url, array $params = []): ApiResponse
     {
-        $options['query'] = $params;
+        $options = [
+            'query' => $params,
+        ];
 
         return $this->makeRequest(self::GET, $this->prepareUrl($url), $options);
     }
 
     protected function sendPost($url, array $params = []): ApiResponse
     {
-        $options['body'] = is_array($params) ? json_encode($params) : $params;
+        $options = [
+            'body' => is_array($params) ? json_encode($params) : $params,
+        ];
 
         return $this->makeRequest(self::POST, $this->prepareUrl($url), $options);
     }
