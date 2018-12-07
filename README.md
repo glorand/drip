@@ -10,7 +10,7 @@ A PHP wrapper for Drip's REST API v2.0 for PHP 7.1+
 
 Author: Gombos Lorand
 
-##Table of contents
+## Table of contents
  - [Installation](#installation)
  - [Current Features](#current_features)
     - [Instantiation](#instantiation)
