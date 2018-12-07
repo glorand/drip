@@ -2,26 +2,26 @@
 
 namespace Glorand\Drip;
 
+use Glorand\Drip\Api\Accounts;
 use Glorand\Drip\Api\Events;
 use Glorand\Drip\Api\Subscribers;
-use Glorand\Drip\Traits\ClientManager;
 
-class Drip
+class Drip extends ClientManager
 {
-    use ClientManager;
+    /** @var string */
+    protected $accountId;
 
     /**
      * Drip constructor.
      *
-     * @param string $apiToken
      * @param string $accountId
+     * @param string $apiToken
      * @param string $userAgent
      */
-    public function __construct(string $apiToken, string $accountId, string $userAgent)
+    public function __construct(string $accountId, string $apiToken, string $userAgent)
     {
-        $this->apiToken = $apiToken;
+        parent::__construct($apiToken, $userAgent);
         $this->accountId = $accountId;
-        $this->userAgent = $userAgent;
     }
 
     /**
@@ -29,7 +29,7 @@ class Drip
      */
     public function events(): Events
     {
-        return new Events($this->getClient());
+        return new Events($this->getClient(), $this->accountId);
     }
 
     /**
@@ -37,6 +37,14 @@ class Drip
      */
     public function subscribers(): Subscribers
     {
-        return new Subscribers($this->getClient());
+        return new Subscribers($this->getClient(), $this->accountId);
+    }
+
+    /**
+     * @return Accounts
+     */
+    public function accounts(): Accounts
+    {
+        return new Accounts($this->getClient(), $this->accountId);
     }
 }

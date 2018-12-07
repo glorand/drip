@@ -14,18 +14,18 @@ class SubscribersTest extends TestCase
     /**
      * @test
      */
-    public function canListEvents()
+    public function testList()
     {
         $mock = new MockHandler([
             new Response(200, [], json_encode(['a' => 'b'])),
             new Response(401, ['Content-Length' => 0]),
         ]);
-        $drip = new Drip($this->apiToken, $this->accountId, $this->userAgent);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
         $drip->setHandler($mock);
 
         $events = $drip->subscribers()->list();
         $this->assertTrue($events->isSuccess());
-        $this->assertEquals(['a' => 'b'], $events->getContents());
+        $this->assertIsArray($events->getContents());
         $this->assertEquals('OK', $events->getHttpMessage());
 
         $events = $drip->subscribers()->list();
@@ -33,22 +33,22 @@ class SubscribersTest extends TestCase
         $this->assertEquals('Unauthorized', $events->getHttpMessage());
 
         $this->expectException(DripException::class);
-        $events = $drip->events()->all(1, 1001);
+        $events = $drip->events()->list(1, 1001);
     }
 
     /**
      * @test
      */
-    public function canCreateEvent()
+    public function testStore()
     {
         $mock = new MockHandler([
             new Response(403, []),
             new Response(200, []),
         ]);
-        $drip = new Drip($this->apiToken, $this->accountId, $this->userAgent);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
         $drip->setHandler($mock);
         $subscriber = new Subscriber();
-        $subscriber->setEmail('gombos.lorand@gmail.com');
+        $subscriber->setEmail('test@email.com');
         $response = $drip->subscribers()->store($subscriber);
         $this->assertFalse($response);
 

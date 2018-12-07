@@ -33,7 +33,7 @@ class Event implements JsonSerializable
      *
      * @return Event
      */
-    public function addProperty($key, $value):self
+    public function addProperty($key, $value): self
     {
         $this->properties[$key] = $value;
 
@@ -100,5 +100,14 @@ class Event implements JsonSerializable
         $this->occurred_at = $occurredAt;
 
         return $this;
+    }
+
+    public function toDrip(): array
+    {
+        return [
+            "events" => [
+                $this->jsonSerialize(),
+            ],
+        ];
     }
 }

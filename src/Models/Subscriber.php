@@ -174,4 +174,13 @@ class Subscriber
 
         return $this;
     }
+
+    public function toDrip(): array
+    {
+        return [
+            "subscribers" => [
+                $this->jsonSerialize(),
+            ],
+        ];
+    }
 }
