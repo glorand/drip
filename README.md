@@ -33,14 +33,14 @@ $ composer require glorand/drip-php
 
 ## Current Features <a name="current_features"></a>
 
-###Instantiation
+### Instantiation
 ```php
 use Glorand\Drip\Drip;
 
 $drip = new Drip('your-account-id', 'your-api-token', 'user-agent-optional');
 ```
 
-###Accounts
+### Accounts
 **List all accounts**
 ```php
 $accounts = $drip->accounts()->list();
