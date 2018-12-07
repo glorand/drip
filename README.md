@@ -9,7 +9,16 @@
 A PHP wrapper for Drip's REST API v2.0 for PHP 7.1+
 
 Author: Gombos Lorand
-## Installation
+
+##Table of contents
+ - [Installation](#installation)
+ - [Current Features](#current_features)
+ - [Changelog](#changelog)
+ - [Contributing](#contributing)
+ - [License](#license)
+
+
+## Installation <a name="installation"></a>
 ```
 $ composer require glorand/drip-php
 ```
@@ -22,6 +31,40 @@ $ composer require glorand/drip-php
 }
 ```
 
-## Current Features
-## License
-When is licensed under the MIT License, see `LICENSE` for specific details.
+## Current Features <a name="current_features"></a>
+
+###Instantiation
+```php
+use Glorand\Drip\Drip;
+
+$drip = new Drip('your-account-id', 'your-api-token', 'user-agent-optional');
+```
+
+###Accounts
+**List all accounts**
+```php
+$accounts = $drip->accounts()->list();
+
+if($accounts->isSuccess()) {
+    foreach($accounts as $acount) {
+        //
+    }
+}
+```
+**Fetch an account**
+```php 
+$account = $drip->accounts()->show('acount-id');
+
+if($accounts->isSuccess()) {
+    //
+}
+```
+
+## Changelog <a name="changelog"></a>
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Contributing <a name="contributing"></a>
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## License <a name="license"></a>
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

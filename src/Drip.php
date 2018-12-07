@@ -18,7 +18,7 @@ class Drip extends ClientManager
      * @param string $apiToken
      * @param string $userAgent
      */
-    public function __construct(string $accountId, string $apiToken, string $userAgent)
+    public function __construct(string $accountId, string $apiToken, string $userAgent = 'DripPHP Agent')
     {
         parent::__construct($apiToken, $userAgent);
         $this->accountId = $accountId;
