@@ -13,6 +13,8 @@ Author: Gombos Lorand
 ##Table of contents
  - [Installation](#installation)
  - [Current Features](#current_features)
+    - [Instantiation](#instantiation)
+    - [Accounts](#accounts)
  - [Changelog](#changelog)
  - [Contributing](#contributing)
  - [License](#license)
@@ -33,14 +35,14 @@ $ composer require glorand/drip-php
 
 ## Current Features <a name="current_features"></a>
 
-### Instantiation
+### Instantiation <a name="instantiation"></a>
 ```php
 use Glorand\Drip\Drip;
 
 $drip = new Drip('your-account-id', 'your-api-token', 'user-agent-optional');
 ```
 
-### Accounts
+### Accounts <a name="accounts"></a>
 **List all accounts**
 ```php
 $accounts = $drip->accounts()->list();
