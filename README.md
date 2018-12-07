@@ -48,7 +48,7 @@ $drip = new Drip('your-account-id', 'your-api-token', 'user-agent-optional');
 $accounts = $drip->accounts()->list();
 
 if($accounts->isSuccess()) {
-    foreach($accounts as $acount) {
+    foreach($accounts->getContents() as $acount) {
         //
     }
 }
@@ -57,8 +57,8 @@ if($accounts->isSuccess()) {
 ```php 
 $account = $drip->accounts()->show('acount-id');
 
-if($accounts->isSuccess()) {
-    //
+if($account->isSuccess()) {
+    // $account->getContents()
 }
 ```
 
