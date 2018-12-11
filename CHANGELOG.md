@@ -2,6 +2,10 @@
 
 All notable changes to `glorand/drip-php` will be documented in this file
 
+## 1.0.2 - 2018-12-11
+### Added
+- Events & Subscribers
+
 ## 1.0.1 - 2018-12-06
 ### Added
 - Accounts endpoint
