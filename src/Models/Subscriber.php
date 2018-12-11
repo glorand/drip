@@ -26,12 +26,12 @@ class Subscriber
     protected $remove_tags;
 
     /**
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param string $value
      *
      * @return Subscriber
      */
-    public function addCustomField($key, $value): self
+    public function addCustomField(string $key, string $value): self
     {
         $this->custom_fields[$key] = $value;
 
@@ -39,11 +39,11 @@ class Subscriber
     }
 
     /**
-     * @param $key
+     * @param string $key
      *
      * @return Subscriber
      */
-    public function removeCustomField($key): self
+    public function removeCustomField(string $key): self
     {
         if (!empty($this->custom_fields[$key])) {
             unset($this->custom_fields[$key]);
@@ -53,12 +53,12 @@ class Subscriber
     }
 
     /**
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param string $value
      *
      * @return Subscriber
      */
-    public function addTag($key, $value): self
+    public function addTag(string $key, string $value): self
     {
         $this->tags[$key] = $value;
 
@@ -66,11 +66,11 @@ class Subscriber
     }
 
     /**
-     * @param $key
+     * @param string $key
      *
      * @return Subscriber
      */
-    public function removeTag($key): self
+    public function removeTag(string $key): self
     {
         if (!empty($this->tags[$key])) {
             unset($this->tags[$key]);
