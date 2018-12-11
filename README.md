@@ -12,7 +12,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/glorand/drip/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/glorand/drip/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/glorand/drip/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/glorand/drip/?branch=master)
 
-</a>
+</p>
 
 # Drip PHP
 A PHP wrapper for Drip's REST API v2.0 for PHP 7.1+
