@@ -13,10 +13,10 @@ abstract class ClientManager
     private $userAgent;
     /** @var string */
     private $apiEndPoint = 'https://api.getdrip.com/v2/';
-    /** @var Client */
+    /** @var Client|null */
     private $client = null;
-    /** @var HandlerStack */
-    private $handler;
+    /** @var callable|null */
+    private $handler = null;
 
     public function __construct(string $apiToken, string $userAgent)
     {
@@ -64,9 +64,9 @@ abstract class ClientManager
     }
 
     /**
-     * @param callable|null $handler
+     * @param callable $handler
      */
-    public function setHandler(callable $handler = null)
+    public function setHandler(callable $handler)
     {
         $this->handler = $handler;
     }

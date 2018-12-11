@@ -28,12 +28,12 @@ class Event implements JsonSerializable
     protected $occurred_at;
 
     /**
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param string $value
      *
      * @return Event
      */
-    public function addProperty($key, $value): self
+    public function addProperty(string $key, string $value): self
     {
         $this->properties[$key] = $value;
 
@@ -41,11 +41,11 @@ class Event implements JsonSerializable
     }
 
     /**
-     * @param $key
+     * @param string $key
      *
      * @return Event
      */
-    public function removeProperty($key): self
+    public function removeProperty(string $key): self
     {
         if (!empty($this->properties[$key])) {
             unset($this->properties[$key]);

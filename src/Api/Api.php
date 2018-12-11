@@ -54,20 +54,20 @@ abstract class Api
     protected function sendPost($url, array $params = []): ApiResponse
     {
         $options = [
-            'body' => is_array($params) ? json_encode($params) : $params,
+            'body' => json_encode($params),
         ];
 
         return $this->makeRequest(self::POST, $this->prepareUrl($url), $options);
     }
 
     /**
-     * @param       $method
-     * @param       $url
-     * @param array $options
+     * @param string $method
+     * @param string $url
+     * @param array  $options
      *
      * @return ApiResponse
      */
-    private function makeRequest($method, $url, array $options = []): ApiResponse
+    private function makeRequest(string $method, string $url, array $options = []): ApiResponse
     {
         try {
             $response = $this->client->request($method, $url, $options);
