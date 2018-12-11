@@ -2,8 +2,6 @@
 <img src="https://user-images.githubusercontent.com/883989/49755957-17ec0980-fcc2-11e8-9e04-0339714f979b.png">
 </p>
 
-<p align="center">
-
 [![Latest Stable Version](https://poser.pugx.org/glorand/drip-php/v/stable)](https://packagist.org/packages/glorand/drip-php)
 [![Build Status](https://travis-ci.com/glorand/drip.svg?branch=master)](https://travis-ci.com/glorand/drip)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
@@ -11,8 +9,6 @@
 [![StyleCI](https://github.styleci.io/repos/160333136/shield?branch=master)](https://github.styleci.io/repos/160333136)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/glorand/drip/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/glorand/drip/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/glorand/drip/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/glorand/drip/?branch=master)
-
-</p>
 
 # Drip PHP
 A PHP wrapper for Drip's REST API v2.0 for PHP 7.1+

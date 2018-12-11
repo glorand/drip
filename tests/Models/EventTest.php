@@ -7,7 +7,6 @@ use PHPUnit\Framework\TestCase;
 
 class EventTest extends TestCase
 {
-
     public function testModel()
     {
         $date = new \DateTime('2016-12-01');
