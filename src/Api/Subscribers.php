@@ -46,4 +46,63 @@ class Subscribers extends Api
 
         return $response->isSuccess();
     }
+
+    /**
+     * @param array $subscribers
+     *
+     * @return bool
+     */
+    public function batchStore(array $subscribers)
+    {
+        $data = [];
+        foreach ($subscribers as $subscriber) {
+            if (is_array($subscriber)) {
+                $data[] = $subscriber;
+            } elseif ($subscriber instanceof Subscriber) {
+                $data[] = $subscriber->jsonSerialize();
+            }
+        }
+
+        $postData = [
+            'batches' => [
+                [
+                    'subscribers' => $data,
+                ],
+            ],
+        ];
+
+        $response = $this->sendPost(
+            ':account_id:/subscribers/batches',
+            $postData
+        );
+
+        return $response->isSuccess();
+    }
+
+    public function batchUnsubscribe(array $subscribers)
+    {
+        $data = [];
+        foreach ($subscribers as $subscriber) {
+            if (is_array($subscriber)) {
+                $data[] = $subscriber;
+            } elseif ($subscriber instanceof Subscriber) {
+                $data[] = $subscriber->getEmail();
+            }
+        }
+
+        $postData = [
+            'batches' => [
+                [
+                    'subscribers' => $data,
+                ],
+            ],
+        ];
+
+        $response = $this->sendPost(
+            ':account_id:/unsubscribes/batches',
+            $postData
+        );
+
+        return $response->isSuccess();
+    }
 }

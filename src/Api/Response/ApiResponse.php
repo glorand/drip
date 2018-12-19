@@ -46,12 +46,17 @@ class ApiResponse
 
     public function getErrors()
     {
+        if ($this->isSuccess()) {
+            return [];
+        }
         if (!empty($this->body['errors'])) {
             return array_map(function ($rec) {
                 return new Error($rec['message'], $rec['code']);
             }, $this->body['errors']);
         } else {
-            return [];
+            return [
+                new Error($this->getHttpMessage(), $this->getStatusCode()),
+            ];
         }
     }
 }

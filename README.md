@@ -2,14 +2,34 @@
 <img src="https://user-images.githubusercontent.com/883989/49755957-17ec0980-fcc2-11e8-9e04-0339714f979b.png">
 </p>
 
-[![Latest Stable Version](https://poser.pugx.org/glorand/drip-php/v/stable)](https://packagist.org/packages/glorand/drip-php)
-[![Build Status](https://travis-ci.com/glorand/drip.svg?branch=master)](https://travis-ci.com/glorand/drip)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
-[![CodeFactor](https://www.codefactor.io/repository/github/glorand/drip/badge/master)](https://www.codefactor.io/repository/github/glorand/drip/overview/master)
-[![StyleCI](https://github.styleci.io/repos/160333136/shield?branch=master)](https://github.styleci.io/repos/160333136)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/glorand/drip/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/glorand/drip/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/glorand/drip/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/glorand/drip/?branch=master)
+<h6 align="center">
+    A PHP wrapper for Drip's REST API
+</h6>
 
+<p align="center">
+ <a href="https://packagist.org/packages/glorand/drip-php">
+  <img src="https://poser.pugx.org/glorand/drip-php/v/stable" alt="Latest Stable Version">
+ </a>
+ <a href="https://travis-ci.com/glorand/drip">
+  <img src="https://travis-ci.com/glorand/drip.svg?branch=master" alt="Build Status">
+ </a>
+ <a href="LICENSE.md">
+  <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat" alt="Software License">
+ </a>
+  <a href="https://www.codefactor.io/repository/github/glorand/drip/overview/master">
+  <img src="https://www.codefactor.io/repository/github/glorand/drip/badge/master" alt="CodeFactor">
+ </a>
+  <a href="https://github.styleci.io/repos/160333136">
+  <img src="https://github.styleci.io/repos/160333136/shield?branch=master" alt="StyleCI">
+ </a>
+  <a href="https://scrutinizer-ci.com/g/glorand/drip/?branch=master">
+  <img src="https://scrutinizer-ci.com/g/glorand/drip/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality">
+ </a>
+  <a href="https://scrutinizer-ci.com/g/glorand/drip/?branch=master">
+  <img src="https://scrutinizer-ci.com/g/glorand/drip/badges/coverage.png?b=master" alt="Code Coverage">
+ </a>
+ </p>
+ 
 # Drip PHP
 A PHP wrapper for Drip's REST API v2.0 for PHP 7.1+
 
@@ -23,6 +43,7 @@ Author: Gombos Lorand
     - [Accounts](#accounts)
     - [Events](#events)
     - [Subscribers](#subscribers)
+    - [Batch Operations](#batch_operations)
  - [Changelog](#changelog)
  - [Contributing](#contributing)
  - [License](#license)
@@ -138,6 +159,49 @@ $drip->subscribers()->store($subscriber);
 ```php
 /** ApiResponse */
 $events = $drip->subscribers()->list();
+```
+
+### Batch Operations <a name="batch_operations"></a>
+
+**Create or update a batch of subscribers**
+```php
+$testData = [
+    [
+        "email"     => "john@acme.com",
+        "time_zone" => "America/Los_Angeles",
+    ],
+    (new Subscriber())->setEmail('joe@acme.com')->setTimeZone('America/Los_Angeles'),
+];
+
+/** boolean */
+$drip->subscribers()->batchStore($testData);
+```
+
+**Unsubscribe a batch of subscribers**
+```php
+$testData = [
+    [
+        "email"     => "john@acme.com",
+    ],
+    (new Subscriber())->setEmail('joe@acme.com'),
+];
+
+/** boolean */
+$drip->subscribers()->batchUnsubscribe($testData);
+```
+
+**Record a batch of events**
+```php
+$testData = [
+    [
+        "email"  => "john@acme.com",
+        "action" => "Opened a door",
+    ],
+    (new Event())->setEmail('joe@acme.com')->setAction('Closed a door'),
+];
+
+/** boolean */
+$drip->events()->batchStore($testData);
 ```
 
 ## Changelog <a name="changelog"></a>
