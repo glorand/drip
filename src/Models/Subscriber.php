@@ -92,6 +92,14 @@ class Subscriber
     }
 
     /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
      * @param string $new_email
      *
      * @return Subscriber

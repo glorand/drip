@@ -48,4 +48,36 @@ class Events extends Api
 
         return $response->isSuccess();
     }
+
+    /**
+     * @param array $events
+     *
+     * @return bool
+     */
+    public function batchStore(array $events)
+    {
+        $data = [];
+        foreach ($events as $event) {
+            if (is_array($event)) {
+                $data[] = $event;
+            } elseif ($event instanceof Event) {
+                $data[] = $event->jsonSerialize();
+            }
+        }
+
+        $postData = [
+            'batches' => [
+                [
+                    'events' => $data,
+                ],
+            ],
+        ];
+
+        $response = $this->sendPost(
+            ':account_id:/events/batches',
+            $postData
+        );
+
+        return $response->isSuccess();
+    }
 }

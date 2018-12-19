@@ -55,4 +55,49 @@ class SubscribersTest extends TestCase
         $response = $drip->subscribers()->store($subscriber);
         $this->assertTrue($response);
     }
+
+    public function testBatchStore()
+    {
+        $mock = new MockHandler([
+            new Response(403, []),
+            new Response(201, []),
+        ]);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
+        $drip->setHandler($mock);
+        $testData = [
+            [
+                "email"     => "john@acme.com",
+                "time_zone" => "America/Los_Angeles",
+            ],
+            (new Subscriber())->setEmail('joe@acme.com')->setTimeZone('America/Los_Angeles'),
+        ];
+
+        $response = $drip->subscribers()->batchStore($testData);
+        $this->assertFalse($response);
+
+        $response = $drip->subscribers()->batchStore($testData);
+        $this->assertTrue($response);
+    }
+
+    public function testBatchUnsubscribe()
+    {
+        $mock = new MockHandler([
+            new Response(403, []),
+            new Response(204, []),
+        ]);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
+        $drip->setHandler($mock);
+        $testData = [
+            [
+                "email"     => "john@acme.com",
+            ],
+            (new Subscriber())->setEmail('joe@acme.com'),
+        ];
+
+        $response = $drip->subscribers()->batchUnsubscribe($testData);
+        $this->assertFalse($response);
+
+        $response = $drip->subscribers()->batchUnsubscribe($testData);
+        $this->assertTrue($response);
+    }
 }

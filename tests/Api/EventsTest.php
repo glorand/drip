@@ -33,6 +33,7 @@ class EventsTest extends TestCase
         $events = $drip->events()->list();
         $this->assertFalse($events->isSuccess());
         $this->assertEquals('Unauthorized', $events->getHttpMessage());
+        $this->assertIsArray($events->getErrors());
 
         $this->expectException(DripException::class);
         $events = $drip->events()->list(1, 1001);
@@ -62,6 +63,28 @@ class EventsTest extends TestCase
         $this->assertFalse($response);
 
         $response = $drip->events()->store($event);
+        $this->assertTrue($response);
+    }
+
+    public function testBatchStore()
+    {
+        $mock = new MockHandler([
+            new Response(403, []),
+            new Response(201, []),
+        ]);
+        $drip = new Drip($this->accountId, $this->apiToken, $this->userAgent);
+        $drip->setHandler($mock);
+        $testData = [
+            [
+                "email"  => "john@acme.com",
+                "action" => "Opened a door",
+            ],
+            (new Event())->setEmail('joe@acme.com')->setAction('Closed a door'),
+        ];
+        $response = $drip->events()->batchStore($testData);
+        $this->assertFalse($response);
+
+        $response = $drip->events()->batchStore($testData);
         $this->assertTrue($response);
     }
 }

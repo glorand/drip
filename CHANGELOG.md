@@ -2,6 +2,13 @@
 
 All notable changes to `glorand/drip-php` will be documented in this file
 
+## 1.0.3 - 2018-12-18
+### Added
+- Batch API
+- Create or update a batch of subscribers
+- Unsubscribe a batch of subscribers
+- Record a batch of events
+
 ## 1.0.2 - 2018-12-11
 ### Added
 - Events & Subscribers
