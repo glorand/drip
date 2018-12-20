@@ -9,7 +9,7 @@ class Accounts extends Api
     /**
      * List all accounts.
      *
-     * @return Response\ApiResponse
+     * @return \Glorand\Drip\Api\Response\ApiResponse
      */
     public function list(): ApiResponse
     {
@@ -21,7 +21,7 @@ class Accounts extends Api
      *
      * @param string $accountId
      *
-     * @return ApiResponse
+     * @return \Glorand\Drip\Api\Response\ApiResponse
      */
     public function show(string $accountId): ApiResponse
     {
