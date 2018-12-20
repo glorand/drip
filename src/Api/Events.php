@@ -12,9 +12,8 @@ class Events extends Api
      * @param int $page
      * @param int $perPage
      *
-     * @throws DripException
-     *
-     * @return Response\ApiResponse
+     * @return \Glorand\Drip\Api\Response\ApiResponse
+     * @throws \Glorand\Drip\Exceptions\DripException
      */
     public function list(int $page = 1, int $perPage = 100): ApiResponse
     {
@@ -34,8 +33,7 @@ class Events extends Api
     /**
      * Record an event
      * @see https://developer.drip.com/?shell#events
-     *
-     * @param Event $event
+     * @param \Glorand\Drip\Models\Event $event
      *
      * @return bool
      */

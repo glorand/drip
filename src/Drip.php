@@ -25,7 +25,7 @@ class Drip extends ClientManager
     }
 
     /**
-     * @return Events
+     * @return \Glorand\Drip\Api\Events
      */
     public function events(): Events
     {
@@ -33,7 +33,7 @@ class Drip extends ClientManager
     }
 
     /**
-     * @return Subscribers
+     * @return \Glorand\Drip\Api\Subscribers
      */
     public function subscribers(): Subscribers
     {
@@ -41,7 +41,7 @@ class Drip extends ClientManager
     }
 
     /**
-     * @return Accounts
+     * @return \Glorand\Drip\Api\Accounts
      */
     public function accounts(): Accounts
     {

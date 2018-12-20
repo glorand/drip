@@ -2,6 +2,10 @@
 
 All notable changes to `glorand/drip-php` will be documented in this file
 
+## 1.0.4 - 2018-12-20
+### Update
+- Use fully-qualified class names in PHPDoc
+
 ## 1.0.3 - 2018-12-18
 ### Added
 - Batch API

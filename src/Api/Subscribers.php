@@ -16,7 +16,7 @@ class Subscribers extends Api
      *                       subscribed_before - Optional. A ISO-8601 datetime. Eg. "2017-01-01T00:00:00Z"
      *                       subscribed_after - Optional. A ISO-8601 datetime. Eg. "2016-01-01T00:00:00Z"
      *
-     * @return ApiResponse
+     * @return \Glorand\Drip\Api\Response\ApiResponse;
      */
     public function list(int $page = 1, int $perPage = 100, array $params = []): ApiResponse
     {
@@ -33,7 +33,7 @@ class Subscribers extends Api
     }
 
     /**
-     * @param Subscriber $subscriber
+     * @param \Glorand\Drip\Models\Subscriber $subscriber
      *
      * @return bool
      */

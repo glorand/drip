@@ -24,8 +24,8 @@ abstract class Api
     /**
      * Api constructor.
      *
-     * @param Client $client
-     * @param string $accountId
+     * @param \GuzzleHttp\Client $client
+     * @param string             $accountId
      */
     public function __construct(Client $client, string $accountId)
     {
